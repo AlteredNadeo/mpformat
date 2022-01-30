@@ -80,4 +80,22 @@ describe('toHTML', () => {
       '<span style="color: #444444;">Text</span>'
     )
   })
+
+  it('should make a link open in external window with externalLinks', () => {
+    expect(
+      toHTML(
+        parse('$l[http://maniaplanet.com]trackmania.com$l', {
+          externalLinks: true,
+        })
+      )
+    ).to.equal(
+      '<a href="http://maniaplanet.com" target="_blank" rel="noopener noreferrer">trackmania.com</a>'
+    )
+  })
+
+  it('should not open manialink in external window with externalLinks', () => {
+    expect(
+      toHTML(parse('$h[maniaflash]ManiaFlash$h', { externalLinks: true }))
+    ).to.equal('<a href="maniaplanet://#manialink=maniaflash">ManiaFlash</a>')
+  })
 })

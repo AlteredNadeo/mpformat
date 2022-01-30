@@ -7,6 +7,7 @@ import LinkTokenOpen from './tokens/link_token_open'
 export interface ParseOptions {
   disableLinks?: boolean
   lightBackground?: boolean
+  externalLinks?: boolean
 }
 
 export function parse(text: string, options: ParseOptions = {}): IToken[] {
@@ -87,7 +88,11 @@ export function parse(text: string, options: ParseOptions = {}): IToken[] {
             endLink()
           } else {
             endText(true)
-            nextLinkToken = new LinkTokenOpen(tok === 'h', null)
+            nextLinkToken = new LinkTokenOpen(
+              tok === 'h',
+              null,
+              options.externalLinks
+            )
             if (!options.disableLinks) {
               tokens.push(nextLinkToken)
             }

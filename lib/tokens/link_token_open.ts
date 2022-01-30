@@ -3,10 +3,16 @@ import { IToken } from '.'
 export default class LinkTokenOpen implements IToken {
   manialink: boolean
   link: string
+  external: boolean
 
-  constructor(manialink: boolean, link: string | null) {
+  constructor(
+    manialink: boolean,
+    link: string | null,
+    external: boolean = false
+  ) {
     this.manialink = manialink
     this.link = link || ''
+    this.external = external
   }
 
   toHTML(): string {
@@ -18,7 +24,12 @@ export default class LinkTokenOpen implements IToken {
     if (!this.manialink && !/^http:/i.test(link)) {
       link = `http://${link}`
     }
-    return `<a href="${link}">`
+
+    const externalAtrs =
+      this.external && !this.manialink
+        ? ' target="_blank" rel="noopener noreferrer"'
+        : ''
+    return `<a href="${link}"${externalAtrs}>`
   }
 
   toPlainText(): string {

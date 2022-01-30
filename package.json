@@ -1,7 +1,7 @@
 {
   "name": "@altrd/mpformat",
-  "version": "0.1.3",
-  "description": "UMD rewrite of maniaplanet/maniaplanet-style-js-parser",
+  "version": "0.2.0",
+  "description": "UMD/TS rewrite of maniaplanet/maniaplanet-style-js-parser",
   "main": "dist/mpformat.umd.js",
   "types": "dist/mpformat.d.ts",
   "module": "dist/mpformat.esm.js",
