@@ -19,7 +19,7 @@ const { parse, toHTML, toPlainText } = require('@altrd/mpformat')
 import { parse, toHTML, toPlainText } from '@altrd/mpformat'
 
 const html = toHTML(parse('$f00Red')) // => '<span style="color: #ff0000;">Red</span>'
-const text = toHTML(parse('$f00Red')) // => 'Red'
+const text = toPlainText(parse('$f00Red')) // => 'Red'
 ```
 
 ### In the browser via unpkg
